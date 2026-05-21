@@ -46,17 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardController.cs" />
+    <Compile Include="Cell.cs" />
     <Compile Include="FormDevelopment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDevelopment.Designer.cs">
       <DependentUpon>FormDevelopment.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGameAnimals.cs">
+    <Compile Include="FormField.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGameAnimals.Designer.cs">
-      <DependentUpon>FormGameAnimals.cs</DependentUpon>
+    <Compile Include="FormField.Designer.cs">
+      <DependentUpon>FormField.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCategory.cs">
       <SubType>Form</SubType>
@@ -70,21 +72,10 @@
     <Compile Include="FormGame.Designer.cs">
       <DependentUpon>FormGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGameFood.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormGameFood.Designer.cs">
-      <DependentUpon>FormGameFood.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormGameItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormGameItems.Designer.cs">
-      <DependentUpon>FormGameItems.cs</DependentUpon>
-    </Compile>
+    <Compile Include="GameDictionary.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScoreManager.cs" />
+    <Compile Include="WordOnField.cs" />
     <EmbeddedResource Include="FormCategory.resx">
       <DependentUpon>FormCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,14 +85,8 @@
     <EmbeddedResource Include="FormGame.resx">
       <DependentUpon>FormGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGameAnimals.resx">
-      <DependentUpon>FormGameAnimals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormGameFood.resx">
-      <DependentUpon>FormGameFood.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormGameItems.resx">
-      <DependentUpon>FormGameItems.cs</DependentUpon>
+    <EmbeddedResource Include="FormField.resx">
+      <DependentUpon>FormField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

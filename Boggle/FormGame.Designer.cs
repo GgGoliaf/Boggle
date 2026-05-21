@@ -120,7 +120,6 @@
             this.Controls.Add(this.pictureBoxMenuImage);
             this.Name = "FormGame";
             this.Text = "Ныхасджын";
-            this.Load += new System.EventHandler(this.FormGame_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);

@@ -1,30 +1,32 @@
 ﻿    using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
     using System.Drawing;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     namespace Boggle
     {
-        public partial class FormGameAnimals : Form
+        public partial class FormField : Form
         {
             Color[] wordColors = { Color.LightGreen, Color.LightBlue, Color.Orange, Color.Pink, Color.Cyan, Color.YellowGreen };
 
-            string[] dictionary = { "куыдз", "кæсаг", "дзæбидр", "гæды", "уасæг", "бабыз" };
-            string[] foundWords = new string[10];   
+            string[] dictionary; 
             int correctWordCount = 0;
-
-            List<DataGridViewCell> selectedCells = new List<DataGridViewCell>(); // Список для хранения выбранных ячеек и сбора слова
-
             int timeLeft = 180;
 
-            public FormGameAnimals()
+            List<DataGridViewCell> selectedCells = new List<DataGridViewCell>(); // Список кликов
+
+            Dictionary<DataGridViewCell, Color> memoryColors = new Dictionary<DataGridViewCell, Color>(); // Память цветов ячеек
+
+            BoardController board = new BoardController(); // uенератор поля
+
+        public FormField(string categoryName)
             {
                 InitializeComponent();
+
+                // Загружаем нужные слова из нашего класса-словаря
+                dictionary = GameDictionary.GetWords(categoryName);
+
                 FillField();
             }
             void StartGame()
@@ -36,29 +38,26 @@
 
             void FillField()
             {
-                string[] letters = {
-                    "к", "у", "ы", "дз", "æ",
-                    "æ", "у", "а", "а", "б",
-                    "с", "ы", "с", "б", "и",
-                    "а", "д", "æ", "ы", "д",
-                    "г", "æ", "г", "з", "р"
-                };
-                int count = 0;
+            // Генерируем матрицу букв без пересечений слов
+            board.GenerateField(dictionary);
 
-                for (int row = 0; row < 5; row++) // 5 строк
+            dataGridViewFieldAnimals.Rows.Clear();
+
+            // Переносим буквы из ООП-модели на сетку формы
+            for (int row = 0; row < 5; row++)
+            {
+                dataGridViewFieldAnimals.Rows.Add();
+                for (int column = 0; column < 5; column++)
                 {
-                    dataGridViewFieldAnimals.Rows.Add();
-                    for (int column = 0; column < 5; column++) // 5 столбцов
-                    {
-                        memoryColors[dataGridViewFieldAnimals[column, row]] = Color.White; // - начальный цвет для ячейки
-                        if (count < letters.Length)
-                        {
-                            dataGridViewFieldAnimals[column, row].Value = letters[count];
-                            count++;
-                        }
-                    }
+                    // Grid использует индексы [X, Y] (колонка, строка)
+                    dataGridViewFieldAnimals[column, row].Value = board.Grid[column, row];
+
+                    // Изначально все ячейки считаются белыми (свободными)
+                    memoryColors[dataGridViewFieldAnimals[column, row]] = Color.White;
                 }
             }
+            dataGridViewFieldAnimals.CurrentCell = null;
+        }
 
             private void FormGameAnimals_Load(object sender, EventArgs e)
             {
@@ -92,50 +91,46 @@
             void SelectCell(DataGridViewCell cell)
             {
                 cell.Style.BackColor = Color.Yellow;
+                cell.Style.SelectionBackColor = Color.Yellow;
                 selectedCells.Add(cell);
-            }
+        }
 
             private void dataGridViewFieldAnimals_CellClick(object sender, DataGridViewCellEventArgs e)
             {
-                DataGridViewCell clickedCell = dataGridViewFieldAnimals[e.ColumnIndex, e.RowIndex]; // нажатая ячейка
+                if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            if (selectedCells.Count == 0)
+                DataGridViewCell clickedCell = dataGridViewFieldAnimals[e.ColumnIndex, e.RowIndex];
+
+                // Запрет клика, если буква уже задействована в угаданном слове (цвет в памяти не белый)
+                if (memoryColors[clickedCell] != Color.White)
                 {
-                    SelectCell(clickedCell);
-                    dataGridViewFieldAnimals.CurrentCell = null; //снять состояние активности с текущей ячейки
-
+                    MessageBox.Show("Эта буква уже задействована в угаданном слове!");
+                    dataGridViewFieldAnimals.CurrentCell = null;
+                    return;
                 }
 
-                // проверка на то, последняя ли буква в сборке
+                if (selectedCells.Count == 0)
+                {
+                    SelectCell(clickedCell);
+                }
+                // Отмена выделения последней буквы при повторном клике
                 else if (selectedCells.Contains(clickedCell))
                 {
                     if (clickedCell == selectedCells.Last())
                     {
-                        // Вместо белого берем цвет из памяти
-
-                        if (memoryColors.ContainsKey(clickedCell))
-                        {
-                            clickedCell.Style.BackColor = memoryColors[clickedCell];
-                            clickedCell.Style.SelectionBackColor = memoryColors[clickedCell];
-                        }
-                        else
-                        {
-                            clickedCell.Style.BackColor = Color.White;
-                            clickedCell.Style.SelectionBackColor = Color.White;
-                        }
-
+                        clickedCell.Style.BackColor = Color.White;
+                        clickedCell.Style.SelectionBackColor = Color.White;
                         selectedCells.Remove(clickedCell);
                     }
                 }
-
+                // Добавление новой буквы в цепочку (проверка соседей)
                 else
                 {
-                    // узнаем рядом ли выделенная буквы с последней нажатой через разночть индексов
-
                     DataGridViewCell lastCell = selectedCells.Last();
                     int rowDiff = Math.Abs(lastCell.RowIndex - clickedCell.RowIndex);
                     int colDiff = Math.Abs(lastCell.ColumnIndex - clickedCell.ColumnIndex);
 
+                    // Строго по горизонтали или вертикали
                     if ((rowDiff == 1 && colDiff == 0) || (rowDiff == 0 && colDiff == 1))
                     {
                         SelectCell(clickedCell);
@@ -145,8 +140,7 @@
                         MessageBox.Show("Можно выбирать только соседние буквы по горизонтали и вертикали");
                     }
                 }
-                dataGridViewFieldAnimals.CurrentCell = null; // убирает системное выделение
-                
+                dataGridViewFieldAnimals.CurrentCell = null;
             }
 
             private void buttonCheckWordInAnimals_Click(object sender, EventArgs e)
@@ -206,7 +200,7 @@
                 }
                
             }
-            Dictionary<DataGridViewCell, Color> memoryColors = new Dictionary<DataGridViewCell, Color>(); // словарь с сохраненными цветами
+            
             void RestoreColorsFromMemory()
             {
                 foreach (var cell in selectedCells)

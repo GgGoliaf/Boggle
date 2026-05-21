@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Boggle
@@ -19,19 +12,19 @@ namespace Boggle
 
         private void buttonAnimals_Click(object sender, EventArgs e)
         {
-            FormGameAnimals form = new FormGameAnimals();
+            FormField form = new FormField("animals");
             form.ShowDialog(this);
         }
 
         private void buttonItems_Click(object sender, EventArgs e)
         {
-            FormGameItems form = new FormGameItems();
+            FormField form = new FormField("items");
             form.ShowDialog(this);
         }
 
         private void buttonFood_Click(object sender, EventArgs e)
         {
-            FormGameFood form = new FormGameFood();
+            FormField form = new FormField("food");
             form.ShowDialog(this);
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Boggle
 {
-    partial class FormGameAnimals
+    partial class FormField
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelTimeInAnimals = new System.Windows.Forms.Label();
             this.buttonCheckWordInAnimals = new System.Windows.Forms.Button();
             this.groupBoxGuessedWordsInAnimals = new System.Windows.Forms.GroupBox();
@@ -160,14 +160,14 @@
             this.Column4,
             this.Column5});
             this.dataGridViewFieldAnimals.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewFieldAnimals.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewFieldAnimals.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewFieldAnimals.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewFieldAnimals.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewFieldAnimals.Location = new System.Drawing.Point(207, 59);
@@ -336,7 +336,7 @@
             this.panelWin.TabIndex = 12;
             this.panelWin.Visible = false;
             // 
-            // FormGameAnimals
+            // FormField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -350,9 +350,8 @@
             this.Controls.Add(this.buttonCheckWordInAnimals);
             this.Controls.Add(this.groupBoxGuessedWordsInAnimals);
             this.Controls.Add(this.labelTimeInAnimals);
-            this.Name = "FormGameAnimals";
+            this.Name = "FormField";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Животные";
             this.Load += new System.EventHandler(this.FormGameAnimals_Load);
             this.groupBoxGuessedWordsInAnimals.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFieldAnimals)).EndInit();
