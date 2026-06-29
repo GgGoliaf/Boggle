@@ -29,23 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelTimeInAnimals = new System.Windows.Forms.Label();
             this.buttonCheckWordInAnimals = new System.Windows.Forms.Button();
             this.groupBoxGuessedWordsInAnimals = new System.Windows.Forms.GroupBox();
             this.listBoxFoundWords = new System.Windows.Forms.ListBox();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewFieldAnimals = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.panelGameOver = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panelKost = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelWordsLeft = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -64,7 +68,7 @@
             // 
             this.labelTimeInAnimals.AutoSize = true;
             this.labelTimeInAnimals.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTimeInAnimals.Location = new System.Drawing.Point(376, 17);
+            this.labelTimeInAnimals.Location = new System.Drawing.Point(80, 12);
             this.labelTimeInAnimals.Name = "labelTimeInAnimals";
             this.labelTimeInAnimals.Size = new System.Drawing.Size(40, 20);
             this.labelTimeInAnimals.TabIndex = 1;
@@ -108,41 +112,6 @@
             this.listBoxFoundWords.Size = new System.Drawing.Size(151, 218);
             this.listBoxFoundWords.TabIndex = 0;
             // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 60;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 60;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 59;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 60;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 60;
-            // 
             // dataGridViewFieldAnimals
             // 
             this.dataGridViewFieldAnimals.AllowUserToAddRows = false;
@@ -158,28 +127,80 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Column6,
+            this.Column7});
             this.dataGridViewFieldAnimals.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewFieldAnimals.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewFieldAnimals.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewFieldAnimals.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewFieldAnimals.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridViewFieldAnimals.Location = new System.Drawing.Point(207, 59);
+            this.dataGridViewFieldAnimals.Location = new System.Drawing.Point(154, 18);
             this.dataGridViewFieldAnimals.MultiSelect = false;
             this.dataGridViewFieldAnimals.Name = "dataGridViewFieldAnimals";
             this.dataGridViewFieldAnimals.ReadOnly = true;
             this.dataGridViewFieldAnimals.RowHeadersVisible = false;
             this.dataGridViewFieldAnimals.RowTemplate.Height = 60;
+            this.dataGridViewFieldAnimals.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewFieldAnimals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewFieldAnimals.Size = new System.Drawing.Size(301, 301);
+            this.dataGridViewFieldAnimals.Size = new System.Drawing.Size(420, 421);
             this.dataGridViewFieldAnimals.TabIndex = 6;
             this.dataGridViewFieldAnimals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFieldAnimals_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 60;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 60;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 59;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Column4";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 60;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Column5";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 60;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Column6";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 60;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Column7";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 60;
             // 
             // timer1
             // 
@@ -190,7 +211,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(298, 13);
+            this.label1.Location = new System.Drawing.Point(12, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 24);
             this.label1.TabIndex = 7;
@@ -240,6 +261,26 @@
             this.panelKost.Size = new System.Drawing.Size(162, 78);
             this.panelKost.TabIndex = 9;
             this.panelKost.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(645, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(139, 20);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Осталось слов:";
+            // 
+            // labelWordsLeft
+            // 
+            this.labelWordsLeft.AutoSize = true;
+            this.labelWordsLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelWordsLeft.Location = new System.Drawing.Point(784, 24);
+            this.labelWordsLeft.Name = "labelWordsLeft";
+            this.labelWordsLeft.Size = new System.Drawing.Size(16, 18);
+            this.labelWordsLeft.TabIndex = 11;
+            this.labelWordsLeft.Text = "0";
             // 
             // label4
             // 
@@ -333,7 +374,7 @@
             this.panelWin.Location = new System.Drawing.Point(0, 0);
             this.panelWin.Name = "panelWin";
             this.panelWin.Size = new System.Drawing.Size(815, 450);
-            this.panelWin.TabIndex = 12;
+            this.panelWin.TabIndex = 26;
             this.panelWin.Visible = false;
             // 
             // FormField
@@ -343,6 +384,8 @@
             this.BackColor = System.Drawing.Color.DarkSalmon;
             this.ClientSize = new System.Drawing.Size(815, 450);
             this.Controls.Add(this.panelWin);
+            this.Controls.Add(this.labelWordsLeft);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panelKost);
             this.Controls.Add(this.panelGameOver);
             this.Controls.Add(this.label1);
@@ -369,11 +412,6 @@
         private System.Windows.Forms.Label labelTimeInAnimals;
         private System.Windows.Forms.Button buttonCheckWordInAnimals;
         private System.Windows.Forms.GroupBox groupBoxGuessedWordsInAnimals;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridView dataGridViewFieldAnimals;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
@@ -382,6 +420,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelKost;
         private System.Windows.Forms.ListBox listBoxFoundWords;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelWordsLeft;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

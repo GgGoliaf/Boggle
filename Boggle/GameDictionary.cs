@@ -9,7 +9,7 @@ namespace Boggle
                 return new string[] { "куыдз", "кæсаг", "дзæбидр", "гæды", "уасæг", "бабыз" };
 
             if (category == "items")
-                return new string[] { "ахстон", "хур", "бæлас", "стъалы", "арт", "арв", "дымгæ" };
+                return new string[] { "ахстон", "хур", "бæлас", "стъалы", "арт", "дымгæ" };
 
             if (category == "food")
                 return new string[] { "æхсыр", "фæткъуы", "кæрдо", "джитъри", "балджын" };

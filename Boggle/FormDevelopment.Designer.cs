@@ -28,49 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelDevelop = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.listBoxHistory = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // labelDevelop
+            // listBoxHistory
             // 
-            this.labelDevelop.AutoSize = true;
-            this.labelDevelop.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDevelop.ForeColor = System.Drawing.Color.IndianRed;
-            this.labelDevelop.Location = new System.Drawing.Point(182, -1);
-            this.labelDevelop.Name = "labelDevelop";
-            this.labelDevelop.Size = new System.Drawing.Size(393, 84);
-            this.labelDevelop.TabIndex = 0;
-            this.labelDevelop.Text = "О разработке";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.IndianRed;
-            this.label1.Location = new System.Drawing.Point(208, 198);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(335, 36);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Когда-нибудь...когда-нибудь...";
+            this.listBoxHistory.BackColor = System.Drawing.Color.White;
+            this.listBoxHistory.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxHistory.ForeColor = System.Drawing.Color.Brown;
+            this.listBoxHistory.FormattingEnabled = true;
+            this.listBoxHistory.ItemHeight = 19;
+            this.listBoxHistory.Location = new System.Drawing.Point(150, 12);
+            this.listBoxHistory.Name = "listBoxHistory";
+            this.listBoxHistory.Size = new System.Drawing.Size(472, 422);
+            this.listBoxHistory.TabIndex = 0;
             // 
             // FormDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkSalmon;
             this.ClientSize = new System.Drawing.Size(813, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.labelDevelop);
+            this.Controls.Add(this.listBoxHistory);
             this.Name = "FormDevelopment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.FormDevelopment_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label labelDevelop;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBoxHistory;
     }
 }
