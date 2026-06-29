@@ -15,9 +15,9 @@ namespace Boggle
         int correctWordCount = 0;
         int timeLeft = 180;
 
-        List<DataGridViewCell> selectedCells = new List<DataGridViewCell>(); // Список кликов
+        List<DataGridViewCell> selectedCells = new List<DataGridViewCell>(); // список кликов
 
-        Dictionary<DataGridViewCell, Color> memoryColors = new Dictionary<DataGridViewCell, Color>(); // Память цветов ячеек
+        Dictionary<DataGridViewCell, Color> memoryColors = new Dictionary<DataGridViewCell, Color>(); // память цветов ячеек
 
         BoardController board = new BoardController(); // uенератор поля
 
@@ -25,7 +25,7 @@ namespace Boggle
         {
             InitializeComponent();
 
-            // Загружаем нужные слова из нашего класса-словаря
+            // загружаем нужные слова из класса словаря
             dictionary = GameDictionary.GetWords(categoryName);
 
             FillField();
@@ -39,22 +39,24 @@ namespace Boggle
 
         void FillField()
         {
-            // Генерируем матрицу букв без пересечений слов
+            // генерируем матрицу букв без пересечений слов
             board.GenerateField(dictionary);
 
             dataGridViewFieldAnimals.Rows.Clear();
 
-            // Заполняем DataGridView до 6 строк и столбцов
+            //заполняем DataGridView до 7 строк и столбцов
             for (int row = 0; row < 7; row++)
             {
                 dataGridViewFieldAnimals.Rows.Add();
                 for (int column = 0; column < 7; column++)
                 {
+                    // берем букву из матрицы и суем в таблицу формы
                     dataGridViewFieldAnimals[column, row].Value = board.Grid[column, row];
+                    // запоминаем, что клетка изначально белая (чистая)
                     memoryColors[dataGridViewFieldAnimals[column, row]] = Color.White;
                 }
             }
-            dataGridViewFieldAnimals.CurrentCell = null;
+            //dataGridViewFieldAnimals.CurrentCell = null;
             //счетчик оставшихся слов
             labelWordsLeft.Text = dictionary.Length.ToString();
         }
@@ -102,7 +104,7 @@ namespace Boggle
 
             DataGridViewCell clickedCell = dataGridViewFieldAnimals[e.ColumnIndex, e.RowIndex];
 
-            // Запрет клика, если буква уже задействована в угаданном слове (цвет в памяти не белый)
+            // запрет клика, если буква уже задействована в угаданном слове (цвет в памяти не белый)
             if (memoryColors[clickedCell] != Color.White)
             {
                 MessageBox.Show("Эта буква уже задействована в угаданном слове!");
@@ -114,7 +116,7 @@ namespace Boggle
             {
                 SelectCell(clickedCell);
             }
-            // Отмена выделения последней буквы при повторном клике
+            // отмена выделения последней буквы при повторном клике
             else if (selectedCells.Contains(clickedCell))
             {
                 if (clickedCell == selectedCells.Last())
@@ -124,14 +126,14 @@ namespace Boggle
                     selectedCells.Remove(clickedCell);
                 }
             }
-            // Добавление новой буквы в цепочку (проверка соседей)
+            // добавление новой буквы в цепочку (проверка соседей)
             else
             {
                 DataGridViewCell lastCell = selectedCells.Last();
                 int rowDiff = Math.Abs(lastCell.RowIndex - clickedCell.RowIndex);
                 int colDiff = Math.Abs(lastCell.ColumnIndex - clickedCell.ColumnIndex);
 
-                // Строго по горизонтали или вертикали
+                // строго по горизонтали или вертикали
                 if ((rowDiff == 1 && colDiff == 0) || (rowDiff == 0 && colDiff == 1))
                 {
                     SelectCell(clickedCell);
@@ -167,7 +169,7 @@ namespace Boggle
             if (isCorrect)
             {
 
-                //Проверка на повтор
+                //проверка на повтор
 
                 if (listBoxFoundWords.Items.Contains(currentWord))
                 {
@@ -176,7 +178,7 @@ namespace Boggle
                     return;
                 }
 
-                // Если слово правильное и новое, то красим и сохраняем
+                // если слово правильное и новое, то красим и сохраняем
 
                 Color finalColor = wordColors[correctWordCount];
                 correctWordCount++;
@@ -190,7 +192,7 @@ namespace Boggle
 
                 }
 
-                // Добавляем слово в список угаданных на экране
+                // добавляем слово в список угаданных на экране
                 listBoxFoundWords.Items.Add(currentWord);
                 selectedCells.Clear();
 

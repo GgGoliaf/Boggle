@@ -5,7 +5,7 @@ namespace Boggle
 {
     public class BoardController
     {
-        // Поле теперь 7 на 7 ячеек
+        // поле 7 на 7 ячеек
         public string[,] Grid = new string[7, 7];
         private Random rand = new Random();
 
@@ -15,11 +15,12 @@ namespace Boggle
 
             while (success == false)
             {
-                Grid = new string[7, 7]; // Очищаем поле 7х7
+                Grid = new string[7, 7]; // очищаем поле перед попыткой
                 success = true;
 
                 foreach (string word in dictionary)
                 {
+                    // пытаемся поставить слово. Если какое-то не влезло, то запускаем генерацию заново
                     if (PlaceWord(word) == false)
                     {
                         success = false;
@@ -28,24 +29,24 @@ namespace Boggle
                 }
             }
 
-            FillEmpty(); // Заполняем пустоту буквами
+            FillEmpty(); // заполняем оставшиеся ячейки буквами
         }
 
         private bool PlaceWord(string word)
         {
-            // Создаем список всех возможных стартовых позиций на поле
+            // создаем список всех возможных стартовых позиций на поле
             List<WordOnField> allPositions = new List<WordOnField>();
 
             for (int x = 0; x < 7; x++)
             {
                 for (int y = 0; y < 7; y++)
                 {
-                    allPositions.Add(new WordOnField(word, x, y, true));  // Вбок
-                    allPositions.Add(new WordOnField(word, x, y, false)); // Вниз
+                    allPositions.Add(new WordOnField(word, x, y, true));  // вбок
+                    allPositions.Add(new WordOnField(word, x, y, false)); // вниз
                 }
             }
 
-            // Перемешиваем список позиций случайным образом
+            // перемешиваем список позиций случайным образом
             for (int i = allPositions.Count - 1; i > 0; i--)
             {
                 int j = rand.Next(i + 1);
@@ -54,28 +55,28 @@ namespace Boggle
                 allPositions[j] = temp;
             }
 
-            // Ищем первую свободную позицию, куда слово влезло целиком
+            // ищем первую свободную позицию, куда слово влезло целиком
             foreach (var pos in allPositions)
             {
                 if (IsInsideBoard(pos) && CheckFree(pos))
                 {
                     foreach (Cell c in pos.cells)
                     {
-                        Grid[c.X, c.Y] = c.Letter;
+                        Grid[c.X, c.Y] = c.Letter; // записываем буквы слова на поле
                     }
-                    return true;
+                    return true; // успешно уложили слово
                 }
             }
 
-            return false;
+            return false; // ни одно место на поле не подошло
         }
 
-        // Проверка: не вылетело ли слово за края поля 7х7?
+        // проверка не вылетело ли слово за края поля
         private bool IsInsideBoard(WordOnField word)
         {
             foreach (Cell c in word.cells)
             {
-                if (c.X >= 7 || c.Y >= 7) return false;
+                if (c.X >= 7 || c.Y >= 7) return false; // вылетело за границы
             }
             return true;
         }
@@ -84,7 +85,7 @@ namespace Boggle
         {
             foreach (Cell c in word.cells)
             {
-                if (Grid[c.X, c.Y] != null) return false;
+                if (Grid[c.X, c.Y] != null) return false; // клетка уже занята другим словом
             }
             return true;
         }
@@ -99,7 +100,7 @@ namespace Boggle
                 {
                     if (Grid[x, y] == null)
                     {
-                        Grid[x, y] = alphabet[rand.Next(alphabet.Length)];
+                        Grid[x, y] = alphabet[rand.Next(alphabet.Length)]; // ставим случайную букву
                     }
                 }
             }

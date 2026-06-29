@@ -3,9 +3,9 @@ namespace Boggle
 {
     public class Cell
     {
-        public int X; 
-        public int Y;
-        public string Letter;
+        public int X; // строка
+        public int Y; // столбец
+        public string Letter;// буква
 
         public Cell(int x, int y, string letter)
         {
